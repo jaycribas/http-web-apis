@@ -1,6 +1,6 @@
 # Concept Focus: HTTP & Web APIs
 
-Project Name: #frail-cow
+Project Name: #frail-cow  
 Team: John Hallman, Jay Cribas
 
 ## Challenge Rating
