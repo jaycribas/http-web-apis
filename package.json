@@ -1,0 +1,26 @@
+{
+  "name": "http-web-apis",
+  "version": "1.0.0",
+  "description": "Project Name: #frail-cow   Team: John Hallman, Jay Cribas",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaycribas/http-web-apis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaycribas/http-web-apis/issues"
+  },
+  "homepage": "https://github.com/jaycribas/http-web-apis#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "pug": "^2.0.0-rc.1"
+  }
+}
