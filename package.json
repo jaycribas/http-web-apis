@@ -4,7 +4,7 @@
   "description": "Project Name: #frail-cow   Team: John Hallman, Jay Cribas",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon app.js --exec babel-node --presets es2015,stage-2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,16 @@
   },
   "homepage": "https://github.com/jaycribas/http-web-apis#readme",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "pug": "^2.0.0-rc.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
   }
 }

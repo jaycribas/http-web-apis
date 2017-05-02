@@ -1,16 +1,15 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+import express from 'express'
+import bodyParser from 'body-parser'
+import router from './routes/routes'
 
-app.use(bodyParser.urlencoded({extended:true}))
+const server = express()
 
-app.set('view engine', 'pug')
-app.use(express.static(__dirname + '/public'))
+server.use(bodyParser.urlencoded({extended:true}))
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+server.set('view engine', 'pug')
+server.use(express.static(__dirname + '/public'))
+server.use(router)
 
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log('Example app listening on port 3000!')
 })
