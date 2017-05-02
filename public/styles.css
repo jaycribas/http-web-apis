@@ -1,0 +1,13 @@
+#header {
+  display: flex;
+  color: white;
+  width: 100%;
+  background: blue ;
+  height: 100px ;
+  justify-content: space-between;;
+}
+
+#navbar {
+  display: flex;
+  align-self: flex-start;
+}
