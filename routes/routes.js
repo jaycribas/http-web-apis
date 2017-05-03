@@ -21,11 +21,19 @@ router.get('/', (req, res) => {
 router.get('/home', (req, res) => {
   client.get(`search/tweets`, params)
   .then( data => {
+    res.status(200)
     res.render('home', {twit: data.statuses[0].text})
   })
 })
 
+router.post('/newTweet', (req, res) => {
+  client.post('statuses/update', {status: req.body.twit})
+  .then( () => {
+    res.redirect('/home')
+  })
+})
+
+
 module.exports = {
-  router,
-  client
+  router
 }
