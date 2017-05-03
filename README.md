@@ -61,12 +61,12 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] `DELETE`
 - [ ] Examples of each HTTP verb usage are listed and linked to in the README
 - [ ] The web server makes use of the following response status codes
-  - [ ] `200` (OK)
+  - [X] `200` (OK)
   - [ ] `201` (Created)
   - [ ] `400` (Bad Request)
   - [ ] `301` (Moved Permanently)
   - [ ] `403` (Forbidden)
-  - [ ] `404` (Not Found)
+  - [X] `404` (Not Found)
   - [ ] `500` (Internal Server Error)
 - [ ] Examples of each status code usage are listed and linked to in the README
 - [ ] The web server uses URL components in routing and responding
@@ -103,7 +103,7 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] Delete a resource
 - [ ] Examples of each request type to the external API are listed and linked to in the README
 - [ ] The best resources you find for learning testing are added to a file `resources.md`
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license]
+- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license]
 
 ## Stretch
 

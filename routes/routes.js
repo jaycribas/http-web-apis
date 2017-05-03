@@ -33,6 +33,10 @@ router.post('/newTweet', (req, res) => {
   })
 })
 
+router.get('/*', (req, res) => {
+  res.status(404)
+  res.render('not-found')
+})
 
 module.exports = {
   router
