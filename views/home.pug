@@ -3,7 +3,11 @@ block content
     form(action='/newTweet' method='POST')
       input(type='text' name='twit')
       input(type='submit' name='sendTwit')
-    
+
     ul
       each val in twit
-        li= val.text 
+        li= val.text
+        form(
+            action='/delete/' + val.id_str
+            method='POST')
+            button(type='submit') delete
