@@ -19,19 +19,9 @@ router.get('/', (req, res) => {
   res.render('index')
 })
 
-// router.get('/home', (req, res) => {
-//   client.get(`search/tweets`, params)
-//   .then( data => {
-//     res.status(200)
-//     res.render('home', {twit: data.statuses[0].text})
-//   })
-// })
-
-
 router.get('/home', (req, res) => {
-  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
+  client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
   .then( data => {
-    console.log('tweeeeeeet ------->', data)
     res.status(200)
     res.render('home', {twit: data})
   })
@@ -42,7 +32,7 @@ router.post('/newTweet', (req, res) => {
   .then( status => {
     if(status) {
     res.status(201)
-    res.render('home', { twit: status.text })
+    res.redirect('/home')
   }
   })
   .catch( error => {
@@ -50,6 +40,36 @@ router.post('/newTweet', (req, res) => {
     res.sendStatus(400)
   })
 })
+
+router.post('/delete/:id_str', (req, res) => {
+  console.log( "(>'')>  ", parseInt(req.params.id_str) )
+  let idValue = req.params.id_str
+   client.post('statuses/destroy/' + idValue, { id: (req.params.id_str)} )
+  .then( response => {
+    console.log( "=-=-=-> response", response )
+    res.redirect('/home')
+  })
+  .catch(error => {
+    console.log( "=-=-=-> error", error )
+  })
+
+})
+
+//
+// router.post('/deleteTweet', (req, res) => {
+//   client.post(`statuses/destroy:${1}`, {status: req.body.twit})
+//   .then( status => {
+//     if(status) {
+//     res.status(201)
+//     res.render('home', { twit: status.text })
+//   }
+//   })
+//   .catch( error => {
+//     console.log(error)
+//     res.sendStatus(400)
+//   })
+// })
+
 
 router.get('/*', (req, res) => {
   res.status(404)
