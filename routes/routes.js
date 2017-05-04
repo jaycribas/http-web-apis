@@ -25,6 +25,21 @@ router.get('/home', (req, res) => {
     res.status(200)
     res.render('home', {twit: data})
   })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+
+router.get('/oldHome', (req, res) => {
+  res.sendStatus(301) // TODO redirect is not currently working
+  .then( () => {
+    res.redirect('/home')
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
 })
 
 router.post('/newTweet', (req, res) => {
@@ -36,40 +51,22 @@ router.post('/newTweet', (req, res) => {
   }
   })
   .catch( error => {
-    console.log(error)
+    console.log( error )
     res.sendStatus(400)
   })
 })
 
 router.post('/delete/:id_str', (req, res) => {
-  console.log( "(>'')>  ", parseInt(req.params.id_str) )
-  let idValue = req.params.id_str
-   client.post('statuses/destroy/' + idValue, { id: (req.params.id_str)} )
-  .then( response => {
-    console.log( "=-=-=-> response", response )
+   client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
+  .then( () => {
+    res.status(200)
     res.redirect('/home')
   })
-  .catch(error => {
-    console.log( "=-=-=-> error", error )
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
   })
-
 })
-
-//
-// router.post('/deleteTweet', (req, res) => {
-//   client.post(`statuses/destroy:${1}`, {status: req.body.twit})
-//   .then( status => {
-//     if(status) {
-//     res.status(201)
-//     res.render('home', { twit: status.text })
-//   }
-//   })
-//   .catch( error => {
-//     console.log(error)
-//     res.sendStatus(400)
-//   })
-// })
-
 
 router.get('/*', (req, res) => {
   res.status(404)
