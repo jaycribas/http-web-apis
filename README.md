@@ -54,17 +54,17 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
 - [X] GitHub repo contains a web server.
 - [X] Can run the command `npm start` to start the web server at port 3000.
 - [X] The web server source code is written using the [Express][express] library.
-- [ ] The web server handles routes for the following HTTP verbs
+- [X] The web server handles routes for the following HTTP verbs
   - [X] `GET`
   - [X] `POST`
-  - [ ] `PUT/PATCH`
-  - [ ] `DELETE`
+  - [(Twitter API does not include PUT verbs) ] `PUT/PATCH`
+  - [(delete handled by a post)] `DELETE`
 - [ ] Examples of each HTTP verb usage are listed and linked to in the README
 - [ ] The web server makes use of the following response status codes
   - [X] `200` (OK)
   - [X] `201` (Created)
   - [X] `400` (Bad Request)
-  - [ ] `301` (Moved Permanently)
+  - [X] `301` (Moved Permanently)
   - [ ] `403` (Forbidden)
   - [X] `404` (Not Found)
   - [ ] `500` (Internal Server Error)
@@ -97,10 +97,10 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] Examples show full HTTP message header
   - [ ] Examples show full HTTP message body
 - [ ] The web server makes the following request types to an external API
-  - [ ] Get a resource
-  - [ ] Create a resource
+  - [X] Get a resource
+  - [X] Create a resource
   - [ ] Update a resource
-  - [ ] Delete a resource
+  - [X] Delete a resource
 - [ ] Examples of each request type to the external API are listed and linked to in the README
 - [ ] The best resources you find for learning testing are added to a file `resources.md`
 - [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license]
