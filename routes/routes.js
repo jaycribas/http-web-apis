@@ -39,8 +39,15 @@ router.get('/home', (req, res) => {
 
 router.post('/newTweet', (req, res) => {
   client.post('statuses/update', {status: req.body.twit})
-  .then( () => {
-    res.redirect('/home')
+  .then( status => {
+    if(status) {
+    res.status(201)
+    res.render('home', { twit: status.text })
+  }
+  })
+  .catch( error => {
+    console.log(error)
+    res.sendStatus(400)
   })
 })
 
