@@ -9,20 +9,31 @@ const client = new Twitter({
   access_token_key: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
+
 let params = {
   q: 'banana since:2011-11-11',
-  count: 1
+  count: 5
 }
 
 router.get('/', (req, res) => {
   res.render('index')
 })
 
+// router.get('/home', (req, res) => {
+//   client.get(`search/tweets`, params)
+//   .then( data => {
+//     res.status(200)
+//     res.render('home', {twit: data.statuses[0].text})
+//   })
+// })
+
+
 router.get('/home', (req, res) => {
-  client.get(`search/tweets`, params)
+  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
   .then( data => {
+    console.log('tweeeeeeet ------->', data)
     res.status(200)
-    res.render('home', {twit: data.statuses[0].text})
+    res.render('home', {twit: data})
   })
 })
 
