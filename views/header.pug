@@ -4,9 +4,14 @@ html(lang='en')
     title
     script(type='text/javascript')
     link(rel='stylesheet' href='styles.css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    script(src="https://use.fontawesome.com/f20ae5fe89.js")
+      
   body
     #header
-      p twits
+      i(class="fa fa-twitter fa-4x" aria-hidden="true")
+      h1#twits twits
       #navbar
-        button logout 
+        button.logout logout 
+
 block content

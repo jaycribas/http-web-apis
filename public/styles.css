@@ -1,13 +1,81 @@
 #header {
+  padding: 0 10%;
   display: flex;
   color: white;
   width: 100%;
-  background: blue ;
+  background: #0c8ce9 ;
   height: 100px ;
-  justify-content: space-between;;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.fa-twitter {
+  flex: 0 1 auto;
+  order: 1;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+#twits {
+  margin-top: 30px;
+  flex: 0 0 auto;
+  order: 2;
+  align-self: auto;
+}
+
+.btn-default {
+  height: 30px;
+}
+
+button.logout {
+  outline: none;
+  border: 0;
 }
 
 #navbar {
+  order: 3;
+  flex: 0 1 auto;
   display: flex;
-  align-self: flex-start;
+}
+
+.fa-trash {
+  color: #ff8181 !important;
+}
+
+button {
+  line-height: 1em;
+}
+
+button.btn:active:focus, button.btn:focus {
+  outline: none;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.tweet {
+  margin-bottom: 15px;
+}
+
+form {
+  display: inline;
+}
+
+.wrap {
+  margin: 15px;
+  align-content: center;
+  padding: 0 10%;
+}
+
+form[type="button"] {
+  outline: none;
+  border: none;
+}
+
+button {
+  outline-style: none;
+
+  background-color: Transparent;
 }
