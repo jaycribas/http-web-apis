@@ -62,8 +62,8 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
 - [ ] Examples of each HTTP verb usage are listed and linked to in the README
 - [ ] The web server makes use of the following response status codes
   - [X] `200` (OK)
-  - [ ] `201` (Created)
-  - [ ] `400` (Bad Request)
+  - [X] `201` (Created)
+  - [X] `400` (Bad Request)
   - [ ] `301` (Moved Permanently)
   - [ ] `403` (Forbidden)
   - [X] `404` (Not Found)
