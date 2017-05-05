@@ -1,9 +1,8 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import {router} from './routes/routes'
-var favicon = require('serve-favicon')
-var path = require('path')
-
+import favicon  from 'serve-favicon'
+import path from 'path'
 
 const server = express()
 
