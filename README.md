@@ -1,3 +1,5 @@
+*'screen_name' needs to be updated in passport.js and routes.js to switch between users.*
+
 ## Route Examples   
 GET
 ```
