@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
-  client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
+  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
   .then( data => {
     res.status(200)
     res.render('home', {twit: data})
@@ -51,7 +51,6 @@ router.post('/newTweet', (req, res) => {
   }
   })
   .catch( error => {
-    console.log( error )
     res.sendStatus(400)
   })
 })

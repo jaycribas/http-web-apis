@@ -1,13 +1,118 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
 #header {
+  padding: 0 10%;
   display: flex;
   color: white;
   width: 100%;
-  background: blue ;
+  background: #0c8ce9 ;
   height: 100px ;
-  justify-content: space-between;;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+#subhead {
+  background: #aecee3;
+  vertical-align: top;
+}
+
+.fa-twitter {
+  flex: 0 1 auto;
+  order: 1;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+#twits {
+  margin-top: 30px;
+  flex: 0 0 auto;
+  order: 2;
+  align-self: auto;
+}
+
+li {
+  font-size: 1.3em;
+  color: #606060;
+  border-bottom: 1px solid #e2e2e2;
+  margin-top: 10px;
+}
+
+.tweet {
+  margin-top: 12px;
+}
+
+.btn-default {
+  border-color: white;
+}
+
+button.send {
+  font-size: 1.3em;
+  border-color: #aecee3;
+  background-color: #aecee3;
+  font-weight: bold;
+  color: white;
+}
+
+input.tweet {
+  width: 500px;
+}
+
+button.logout {
+  outline: none;
+  border: 0;
 }
 
 #navbar {
+  order: 3;
+  flex: 0 1 auto;
   display: flex;
-  align-self: flex-start;
+}
+
+.fa-trash {
+  color: #ff8181 !important;
+}
+
+button {
+  line-height: 1em;
+}
+
+button.btn:active:focus, button.btn:focus {
+  outline: none;
+}
+
+ul {
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.tweet {
+  margin-bottom: 15px;
+}
+
+form {
+  display: inline;
+  align-items: center;
+  margin: 0;
+}
+
+.wrap {
+  align-content: center;
+  padding: 0 10%;
+}
+
+form[type="button"] {
+  outline: none;
+  border: none;
+}
+
+button {
+  outline-style: none;
+  background-color: Transparent;
 }

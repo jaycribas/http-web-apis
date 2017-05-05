@@ -1,13 +1,31 @@
 extends header.pug
 block content
-    form(action='/newTweet' method='POST')
-      input(type='text' name='twit')
-      input(type='submit' name='sendTwit')
+    #subhead
+      .wrap
+        form(
+          action='/newTweet' 
+          method='POST'
+        )
+          input.tweet(
+            type='text' 
+            placeholder='Write a twit' 
+            name='twit'
+          )
+          button.send(
+            type='submit' 
+            class='btn btn-default' 
+            name='sendTwit'
+          ) SEND TWIT
 
-    ul
+    ul.wrap
       each val in twit
         li= val.text
-        form(
+          form(
             action='/delete/' + val.id_str
-            method='POST')
-            button(type='submit') delete
+            method='POST'
+          )
+            button(
+              class='btn'
+              type='submit') 
+              i.fa.fa-trash(aria-hidden='true'
+            )
