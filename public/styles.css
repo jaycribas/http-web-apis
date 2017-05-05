@@ -6,6 +6,11 @@ h1 {
   font-weight: 700;
 }
 
+.logo {
+  text-decoration: none;
+  color: white;
+}
+
 #header {
   padding: 0 10%;
   display: flex;
@@ -105,6 +110,12 @@ form {
 .wrap {
   align-content: center;
   padding: 0 10%;
+}
+
+.not-found {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
 }
 
 form[type="button"] {
