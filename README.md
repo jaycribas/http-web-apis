@@ -88,8 +88,8 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] `Content-Length`
 - [ ] Examples of each response header usage are listed and linked to in the README
 - [ ] The web server serves different types of resources
-  - [ ] Asset files (CSS, images)
-  - [ ] Static HTML
+  - [X] Asset files (CSS, images)
+  - [X] Static HTML
   - [ ] Static JSON
   - [ ] Dynamic resources (content of response changes based on query params, request headers, and/or application state)
 - [ ] Examples of each response type are listed and linked to in the README
