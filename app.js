@@ -1,10 +1,14 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import {router} from './routes/routes'
+var favicon = require('serve-favicon')
+var path = require('path')
+
 
 const server = express()
 
 server.use(bodyParser.urlencoded({extended:true}))
+server.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 server.set('view engine', 'pug')
 server.use(express.static(__dirname + '/public'))
