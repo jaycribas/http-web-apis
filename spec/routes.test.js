@@ -15,7 +15,7 @@ describe('Route Tests ', () => {
         client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
       .then( response => {
         console.log( "=-=-=-> response", response )
-        expect(response).to.equal(2)
+        expect(response.user.screen_name).to.equal('JPH_5')
         done()
       })
       .catch( error => {
