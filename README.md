@@ -1,3 +1,174 @@
+## Route Examples   
+GET
+```
+router.get('/home', (req, res) => {
+  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
+  .then( data => {
+    res.status(200)
+    res.render('home', {twit: data})
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+```
+POST
+```
+router.post('/newTweet', (req, res) => {
+  client.post('statuses/update', {status: req.body.twit})
+  .then( status => {
+    if(status) {
+    res.status(201)
+    res.redirect('/home')
+  }
+  })
+  .catch( error => {
+    res.sendStatus(400)
+  })
+})
+```
+
+## Status Codes  
+200
+```
+router.post('/delete/:id_str', (req, res) => {
+   client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
+  .then( () => {
+    res.status(200)
+    res.redirect('/home')
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+```
+201, 400
+```
+router.post('/newTweet', (req, res) => {
+  client.post('statuses/update', {status: req.body.twit})
+  .then( status => {
+    if(status) {
+    res.status(201)
+    res.redirect('/home')
+  }
+  })
+  .catch( error => {
+    res.sendStatus(400)
+  })
+})
+```
+301
+```
+router.get('/oldHome', (req, res) => {
+  res.sendStatus(301)
+  .then( () => {
+    res.redirect('/home')
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+```
+404
+```
+router.get('/*', (req, res) => {
+  res.status(404)
+  res.render('not-found')
+})
+```
+## Response header usage
+Location (handled by Express' redirect method)
+```
+router.post('/newTweet', (req, res) => {
+  client.post('statuses/update', {status: req.body.twit})
+  .then( status => {
+    if(status) {
+    res.status(201)
+    res.redirect('/home')
+  }
+  })
+  .catch( error => {
+    res.sendStatus(400)
+  })
+})
+```
+## Raw HTTP request header  
+/home
+```
+Connection →keep-alive
+Content-Length →2325
+Content-Type →text/html; charset=utf-8
+Date →Fri, 05 May 2017 20:55:28 GMT
+ETag →W/"915-0/7ZOSM+vEi0VSRX5ZBGKwO5DwA"
+X-Powered-By →Express
+```
+## Request types to external API
+Get a resource
+```
+router.get('/home', (req, res) => {
+  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
+  .then( data => {
+    res.status(200)
+    res.render('home', {twit: data})
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+```
+Create a resource
+```
+router.post('/newTweet', (req, res) => {
+  client.post('statuses/update', {status: req.body.twit})
+  .then( status => {
+    if(status) {
+    res.status(201)
+    res.redirect('/home')
+  }
+  })
+  .catch( error => {
+    res.sendStatus(400)
+  })
+})
+```
+Delete a resource
+```
+router.post('/delete/:id_str', (req, res) => {
+   client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
+  .then( () => {
+    res.status(200)
+    res.redirect('/home')
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+```
+## OAuth routes
+```
+const strategy = new TwitterStrategy({
+  consumerKey: process.env.API_KEY,
+  consumerSecret: process.env.API_SECRET,
+  callbackURL: 'http://localhost:9000/auth/twitter/callback'
+},
+function(token, tokenSecret, profile, done) {
+  User.findOrCreate({ displayname: 'JPH5_' }, function(err, user){
+    if (err) return done(err)
+    done(null, user)
+    })
+  }
+)
+
+router.get('/auth/twitter', passport.authenticate('twitter'))
+router.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/home',
+  failureRedirect: '/'}))
+```
+
 # Concept Focus: HTTP & Web APIs
 
 Project Name: #frail-cow  
@@ -50,27 +221,27 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
 
 ## Specifications
 
-- [X] Artifact produced is a GitHub repo.
-- [X] GitHub repo contains a web server.
-- [X] Can run the command `npm start` to start the web server at port 3000.
-- [X] The web server source code is written using the [Express][express] library.
-- [X] The web server handles routes for the following HTTP verbs
-  - [X] `GET`
-  - [X] `POST`
+- [x] Artifact produced is a GitHub repo.
+- [x] GitHub repo contains a web server.
+- [x] Can run the command `npm start` to start the web server at port 3000.
+- [x] The web server source code is written using the [Express][express] library.
+- [x] The web server handles routes for the following HTTP verbs
+  - [x] `GET`
+  - [x] `POST`
   - [(Twitter API does not include PUT verbs) ] `PUT/PATCH`
   - [(delete handled by a post)] `DELETE`
-- [ ] Examples of each HTTP verb usage are listed and linked to in the README
+- [x] Examples of each HTTP verb usage are listed and linked to in the README
 - [ ] The web server makes use of the following response status codes
-  - [X] `200` (OK)
-  - [X] `201` (Created)
-  - [X] `400` (Bad Request)
-  - [X] `301` (Moved Permanently)
+  - [x] `200` (OK)
+  - [x] `201` (Created)
+  - [x] `400` (Bad Request)
+  - [x] `301` (Moved Permanently)
   - [ ] `403` (Forbidden)
-  - [X] `404` (Not Found)
+  - [x] `404` (Not Found)
   - [ ] `500` (Internal Server Error)
-- [ ] Examples of each status code usage are listed and linked to in the README
-- [X] The web server uses URL components in routing and responding
-  - [X] Different paths trigger different routes
+- [x] Examples of each status code usage are listed and linked to in the README
+- [x] The web server uses URL components in routing and responding
+  - [x] Different paths trigger different routes
   - [ ] Values from the URL query string are used in a route
 - [ ] Examples of routing and query string usage are listed and linked to in the README
 - [ ] The web server makes use of the following request headers
@@ -81,35 +252,35 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] `Cookie`
 - [ ] Examples of each request header usage are listed and linked to in the README
 - [ ] The web server makes use of the following response headers
-  - [X(handled by redirect)] `Location`
+  - [x] `Location`
   - [ ] `Set-Cookie`
   - [ ] `Refresh`
   - [ ] `Access-Control-Allow-Origin`
   - [ ] `Content-Length`
-- [ ] Examples of each response header usage are listed and linked to in the README
-- [ ] The web server serves different types of resources
-  - [X] Asset files (CSS, images)
-  - [X] Static HTML
+- [x] Examples of each response header usage are listed and linked to in the README
+- [x] The web server serves different types of resources
+  - [x] Asset files (CSS, images)
+  - [x] Static HTML
   - [ ] Static JSON
   - [ ] Dynamic resources (content of response changes based on query params, request headers, and/or application state)
-- [ ] Examples of each response type are listed and linked to in the README
+- [x] Examples of each response type are listed and linked to in the README
 - [ ] Example of a raw HTTP request and the server's raw HTTP response are included in the README
-  - [ ] Examples show full HTTP message header
+  - [x] Examples show full HTTP message header
   - [ ] Examples show full HTTP message body
 - [ ] The web server makes the following request types to an external API
-  - [X] Get a resource
-  - [X] Create a resource
+  - [x] Get a resource
+  - [x] Create a resource
   - [ ] Update a resource
-  - [X] Delete a resource
+  - [x] Delete a resource
 - [ ] Examples of each request type to the external API are listed and linked to in the README
-- [ ] The best resources you find for learning testing are added to a file `resources.md`
-- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license]
+- [x] The best resources you find for learning testing are added to a file `resources.md`
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license]
 
 ## Stretch
 
 - [ ] Web server is written using _only the core Node.js modules_ (instead of Express, use the built-in [HTTP module][node-http])
-- [ ] Web server uses OAuth to authenticate with the external API
-- [ ] OAuth routes are listed and linked to in the README
+- [x] Web server uses OAuth to authenticate with the external API
+- [x] OAuth routes are listed and linked to in the README
 - [ ] The web server exposes a JSON API at `/api`
   - [ ] API supports all CRUD actions for a resource (Create, Read, Update, Delete)
   - [ ] API follows a the RESTful design convention
