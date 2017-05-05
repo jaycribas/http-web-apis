@@ -25,6 +25,21 @@ router.get('/home', (req, res) => {
     res.status(200)
     res.render('home', {twit: data})
   })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
+})
+
+router.get('/oldHome', (req, res) => {
+  res.sendStatus(301) // TODO redirect is not currently working
+  .then( () => {
+    res.redirect('/home')
+  })
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
+  })
 })
 
 router.post('/newTweet', (req, res) => {
@@ -41,14 +56,15 @@ router.post('/newTweet', (req, res) => {
 })
 
 router.post('/delete/:id_str', (req, res) => {
-  let idValue = req.params.id_str
-   client.post('statuses/destroy/' + idValue, { id: (req.params.id_str)} )
-  .then( response => {
+   client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
+  .then( () => {
+    res.status(200)
     res.redirect('/home')
   })
-  .catch(error => {
+  .catch( error => {
+    console.log( error )
+    res.sendStatus(400)
   })
-
 })
 
 router.get('/*', (req, res) => {
