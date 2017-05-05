@@ -1,5 +1,8 @@
 import express from 'express'
 import Twitter from 'twitter'
+import passport from 'passport'
+import { TwitterStrategy } from 'passport-twitter'
+import { strategy } from '../passport'
 require('dotenv').load()
 
 const router = express()
@@ -9,6 +12,8 @@ const client = new Twitter({
   access_token_key: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
+
+passport.use( strategy )
 
 let params = {
   q: 'banana since:2011-11-11',
@@ -20,7 +25,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
-  client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
+  client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
   .then( data => {
     res.status(200)
     res.render('home', {twit: data})
@@ -67,11 +72,16 @@ router.post('/delete/:id_str', (req, res) => {
   })
 })
 
+router.get('/auth/twitter', passport.authenticate('twitter'))
+router.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/home',
+  failureRedirect: '/'}))
+
 router.get('/*', (req, res) => {
   res.status(404)
   res.render('not-found')
 })
 
 module.exports = {
-  router
+  router,
+  client
 }
