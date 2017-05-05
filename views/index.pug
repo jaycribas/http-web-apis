@@ -1,11 +1,26 @@
-doctype html
-html( lang='en')
+html(lang='en')
   head
     title
-    script(type='text/javascript')
-  body
-    form( method='POST')
-      input(type='text' name='username' placeholder='username')
-      input(type='text' name='password' placeholder='password')
-      input(type='submit' value='login')
-  a(href='/auth/twitter') sign in with Twitter
+    link(
+      href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" 
+      rel="stylesheet"
+    )
+    link(
+      rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    )
+    script(
+      src="https://use.fontawesome.com/f20ae5fe89.js"
+    )
+    link(
+      rel='stylesheet' 
+      href='styles.css'
+    )
+  
+  body.index
+    div.center
+      h1.twits.lrg twits 
+    
+    a(
+      href='/auth/twitter'
+      class='btn btn-primary btn-lg oauth'
+    ) sign in with Twitter
