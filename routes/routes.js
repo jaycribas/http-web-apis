@@ -1,7 +1,6 @@
 import express from 'express'
 import Twitter from 'twitter'
 import passport from 'passport'
-import { TwitterStrategy } from 'passport-twitter'
 import { strategy } from '../passport'
 require('dotenv').load()
 
@@ -14,11 +13,6 @@ const client = new Twitter({
 })
 
 passport.use( strategy )
-
-let params = {
-  q: 'banana since:2011-11-11',
-  count: 5
-}
 
 router.get('/', (req, res) => {
   res.render('index')
@@ -37,7 +31,7 @@ router.get('/home', (req, res) => {
 })
 
 router.get('/oldHome', (req, res) => {
-  res.sendStatus(301) // TODO redirect is not currently working
+  res.sendStatus(301)
   .then( () => {
     res.redirect('/home')
   })
