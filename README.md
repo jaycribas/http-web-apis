@@ -69,8 +69,8 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [X] `404` (Not Found)
   - [ ] `500` (Internal Server Error)
 - [ ] Examples of each status code usage are listed and linked to in the README
-- [ ] The web server uses URL components in routing and responding
-  - [ ] Different paths trigger different routes
+- [X] The web server uses URL components in routing and responding
+  - [X] Different paths trigger different routes
   - [ ] Values from the URL query string are used in a route
 - [ ] Examples of routing and query string usage are listed and linked to in the README
 - [ ] The web server makes use of the following request headers
@@ -81,7 +81,7 @@ An added benefit of working on a concept-focus goal is that you'll have a projec
   - [ ] `Cookie`
 - [ ] Examples of each request header usage are listed and linked to in the README
 - [ ] The web server makes use of the following response headers
-  - [ ] `Location`
+  - [X(handled by redirect)] `Location`
   - [ ] `Set-Cookie`
   - [ ] `Refresh`
   - [ ] `Access-Control-Allow-Origin`

@@ -16,3 +16,7 @@ server.use(router)
 server.listen(9000, () => {
   console.log('Example app listening on port 9000!')
 })
+
+module.exports = {
+  server
+}
