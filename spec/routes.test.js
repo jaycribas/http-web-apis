@@ -6,22 +6,18 @@ import { client } from '../routes/routes'
 chai.use( chaiHttp )
 
 describe('Route Tests ', () => {
-  context('get', () => {
-
-    it( '/ renders the index', done => {
-
-      chai.request(server)
-      .get('/home')
-        client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
-      .then( response => {
-        console.log( "=-=-=-> response", response )
-        expect(response.user.screen_name).to.equal('JPH_5')
-        done()
-      })
-      .catch( error => {
-        console.log( "=-=-=-> error", error )
-        done()
-      })
+  it( '/home gets user data', done => {
+    chai.request(server)
+    .get('/home')
+      client.get(`statuses/user_timeline`, {screen_name: 'JPH5_'})
+    .then(response => {
+      expect(response[0].user.screen_name).to.equal('JPH5_')
+      expect(response[0].user.name).to.equal('John Philip Hallman')
+      done()
+    })
+    .catch( error => {
+      console.log( "=-=-=-> error", error )
+      done()
     })
   })
 })
