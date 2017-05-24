@@ -2,7 +2,7 @@
 
 ## Route Examples   
 GET
-```
+```js
 router.get('/home', (req, res) => {
   client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
   .then( data => {
@@ -16,7 +16,7 @@ router.get('/home', (req, res) => {
 })
 ```
 POST
-```
+```js
 router.post('/newTweet', (req, res) => {
   client.post('statuses/update', {status: req.body.twit})
   .then( status => {
@@ -33,7 +33,7 @@ router.post('/newTweet', (req, res) => {
 
 ## Status Codes  
 200
-```
+```js
 router.post('/delete/:id_str', (req, res) => {
    client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
   .then( () => {
@@ -47,7 +47,7 @@ router.post('/delete/:id_str', (req, res) => {
 })
 ```
 201, 400
-```
+```js
 router.post('/newTweet', (req, res) => {
   client.post('statuses/update', {status: req.body.twit})
   .then( status => {
@@ -62,7 +62,7 @@ router.post('/newTweet', (req, res) => {
 })
 ```
 301
-```
+```js
 router.get('/oldHome', (req, res) => {
   res.sendStatus(301)
   .then( () => {
@@ -75,7 +75,7 @@ router.get('/oldHome', (req, res) => {
 })
 ```
 404
-```
+```js
 router.get('/*', (req, res) => {
   res.status(404)
   res.render('not-found')
@@ -83,7 +83,7 @@ router.get('/*', (req, res) => {
 ```
 ## Response header usage
 Location (handled by Express' redirect method)
-```
+```js
 router.post('/newTweet', (req, res) => {
   client.post('statuses/update', {status: req.body.twit})
   .then( status => {
@@ -99,7 +99,7 @@ router.post('/newTweet', (req, res) => {
 ```
 ## Raw HTTP request header  
 /home
-```
+```js
 Connection →keep-alive
 Content-Length →2325
 Content-Type →text/html; charset=utf-8
@@ -109,7 +109,7 @@ X-Powered-By →Express
 ```
 ## Request types to external API
 Get a resource
-```
+```js
 router.get('/home', (req, res) => {
   client.get(`statuses/user_timeline`, {screen_name: 'jaycribas'})
   .then( data => {
@@ -123,7 +123,7 @@ router.get('/home', (req, res) => {
 })
 ```
 Create a resource
-```
+```js
 router.post('/newTweet', (req, res) => {
   client.post('statuses/update', {status: req.body.twit})
   .then( status => {
@@ -138,7 +138,7 @@ router.post('/newTweet', (req, res) => {
 })
 ```
 Delete a resource
-```
+```js
 router.post('/delete/:id_str', (req, res) => {
    client.post('statuses/destroy/' + req.params.id_str, { id: req.params.id_str })
   .then( () => {
@@ -152,7 +152,7 @@ router.post('/delete/:id_str', (req, res) => {
 })
 ```
 ## OAuth routes
-```
+```js
 const strategy = new TwitterStrategy({
   consumerKey: process.env.API_KEY,
   consumerSecret: process.env.API_SECRET,
